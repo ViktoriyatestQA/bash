@@ -1,0 +1,145 @@
+Зайти в домашнюю директорию
+
+zajko@MacBook-Air-Zaja bash_training 
+% cd ~
+
+Создать папку test 3
+
+zajko@MacBook-Air-Zaja bash_training 
+% mkdir test3
+
+Добавить в папку test 3 три файла 4, 5 и 6, в каждом из которых должно быть по 4 строки row1, row2, row3, row4
+
+zajko@MacBook-Air-Zaja bash_training 
+% cd test3  
+zajko@MacBook-Air-Zaja test3 
+% touch {4,5,6}.txt
+zajko@MacBook-Air-Zaja test3 
+% echo row1, row2, row3, row4 > 4.txt
+zajko@MacBook-Air-Zaja test3 
+% echo row1, row2, row3, row4 > 5.txt
+zajko@MacBook-Air-Zaja test3 
+% echo row1, row2, row3, row4 > 6.txt
+
+Найдите строку row2 в файле 5
+
+zajko@MacBook-Air-Zaja test3 
+% grep "row2" 5.txt
+
+Найдите строку row в папке test3
+
+zajko@MacBook-Air-Zaja bash_training 
+% grep 'row' ./test3  -r
+./test3/5.txt:row1, row2, row3, row4
+./test3/4.txt:row1, row2, row3, row4
+./test3/6.txt:row1
+./test3/6.txt:row2
+./test3/6.txt:row3
+./test3/6.txt:row4
+
+Посчитайте сколько строк с содержимым row в файле 6
+
+zajko@MacBook-Air-Zaja bash_training 
+% cd test3
+zajko@MacBook-Air-Zaja test3 
+% grep 'row' 6.txt -c  
+4
+
+Найдите файл 5 внутри папки test3
+
+zajko@MacBook-Air-Zaja bash_training 
+% find ./test3  -name 5.txt
+./test3/5.txt
+
+Используя команду find, удалите файл 5
+
+zajko@MacBook-Air-Zaja bash_training 
+% find ./test3  -name 5.txt -delete
+
+
+Используя команду echo, добавьте слово test в файл 4
+
+zajko@MacBook-Air-Zaja bash_training 
+% echo "test" >> ./test3/4.txt  
+
+Замените слово test в файле 4 на fail
+
+zajko@MacBook-Air-Zaja bash_training 
+% cd test3
+zajko@MacBook-Air-Zaja test3 
+% sed 's/test/fail/g' 4.txt
+row1, row2, row3, row4
+fail
+
+Добавьте в файл 4 слово test так, чтобы сохранилось содержимое
+
+zajko@MacBook-Air-Zaja bash_training 
+% echo "test" >> ./test3/4.txt   
+
+Просмотрите все процессы для юзеров не только в консоли, которые происходят в системе
+
+zajko@MacBook-Air-Zaja ~ % ps aux
+USER               PID  %CPU %MEM      VSZ    RSS   TT  STAT STARTED      TIME COMMAND
+zajko             2334   7,9  0,5 1223216876  42780   ??  S     9:47     0:42.31 /Applications/GitHub Desktop.app/Contents/Frameworks/
+_windowserver      353   7,9  0,8 410525936  65904   ??  Ss    9:24    25:45.71 /System/Library/PrivateFrameworks/SkyLight.framework/
+zajko             2330   6,1  0,2 35552300  19776   ??  S     9:47     1:24.35 /Applications/GitHub Desktop.app/Contents/Frameworks/
+
+Процессов много я всю «палитру» не стала копировать
+
+
+User@DESKTOP-3JAHKQ1 MINGW64 ~
+$ ps aux
+      PID    PPID    PGID     WINPID   TTY         UID    STIME COMMAND
+     1478    1425    1478      13180  cons0     197608 11:33:50 /usr/bin/ps
+     1425       1    1425      17048  cons0     197608 11:27:19 /usr/bin/bash
+
+
+Убейте процесс 666 в консоли
+zajko@MacBook-Air-Zaja ~ 
+% Kill  666
+
+Узнайте доступность ресурса artsiomrusau.com, используя ping
+
+zajko@MacBook-Air-Zaja ~ 
+% ping artsiomrusau.com
+PING artsiomrusau.com (185.215.4.92): 56 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+Request timeout for icmp_seq 2
+Request timeout for icmp_seq 3
+Request timeout for icmp_seq 4
+Request timeout for icmp_seq 5
+
+--- artsiomrusau.com ping statistics ---
+12 packets transmitted, 0 packets received, 100.0% packet loss
+zajko@MacBook-Air-Zaja ~ % 
+
+
+Отправьте 5 пакетов на сайт artsiomrusau.com
+zajko@MacBook-Air-Zaja bash_training 
+% ping -n 5  artsiomrusau.com
+у меня "не прокатило" при этом запросе (12 packets transmitted, 0 packets received, 100.0% packet loss)
+потеря 100%
+
+
+Используя GET и команду curl, получите информацию о зарегистрированных питомцах на https://petstore.swagger.io/
+zajko@MacBook-Air-Zaja bash_training 
+% curl -X 'GET' \
+>   'https://petstore.swagger.io/v2/store/inventory' \
+>   -H 'accept: application/json'
+{"sold":1,"string":796,"pending":2,"available":198}
+
+zajko@MacBook-Air-Zaja bash_training % >....                                                  
+>   -H 'accept: application/json' \
+>   -H 'Content-Type: application/json' \
+>   -d '{
+>   "id": 0,
+>   "username": "Barsik",
+>   "firstName": "Bars",
+>   "lastName": "Dog",
+>   "email": "barsa@tut.by",
+>   "password": "111111",
+>   "phone": "string",
+>   "userStatus": 0
+> }'
+{"code":200,"type":"unknown","message":"9223372036854756579"}
