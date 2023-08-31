@@ -1,0 +1,107 @@
+Открыть домашнюю директорию
+Определить имя папки, в которой вы находитесь
+ 
+zajko@MacBook-Air-Zaja bash_training 
+% pwd
+/Users/zajko/Desktop/bash_training
+ 
+Создать внутри этой папки каталог  с именем test1
+ 
+zajko@MacBook-Air-Zaja bash_training 
+% mkdir test1
+ 
+Перейти в папку test1
+ 
+zajko@MacBook-Air-Zaja bash_training 
+% cd test1
+ 
+Создать файл 1,2 и 3 внутри каталога test1
+ 
+ zajko@MacBook-Air-Zaja test1 
+% touch {1,2,3}.txt  
+ 
+ 
+Проверить содержимое каталога test1
+ 
+zajko@MacBook-Air-Zaja test1 
+% ls 1.txt  2.txt  3.txt
+1.txt   2.txt   3.txt
+ 
+ 
+Перейти в домашнюю директорию
+ 
+zajko@MacBook-Air-Zaja test1 
+% cd ..
+ 
+ 
+Создать папку test2 внутри домашней директории
+zajko@MacBook-Air-Zaja bash_training 
+% mkdir test2
+ 
+Удалить папку test2
+ 
+zajko@MacBook-Air-Zaja bash_training 
+% rmdir test2
+ 
+Удалить файл 2 из папки test1
+ 
+zajko@MacBook-Air-Zaja bash_training 
+% rm 2.txt/test1  
+ 
+Создать папку в домашней директории test3 и добавить в нее два файла
+ 
+zajko@MacBook-Air-Zaja bash_training 
+% mkdir test3
+ 
+zajko@MacBook-Air-Zaja bash_training 
+% cd test3
+zajko@MacBook-Air-Zaja test3 
+% touch {3,4}.txt
+ 
+Удалить папку test3
+ 
+zajko@MacBook-Air-Zaja test3 
+% rm -rf test3
+ 
+ 
+Создать папку test4 в домашней директории
+ 
+zajko@MacBook-Air-Zaja bash_training 
+% mkdir test4
+ 
+ 
+Переместить файлы 1 и 3 из папки test1 в папку test4
+zajko@MacBook-Air-Zaja bash_training 
+% mv test1/{1,3}.txt test4/
+ 
+ 
+Добавить в файл 1 три строки со словами line
+zajko@MacBook-Air-Zaja bash_training 
+% cd test4  
+zajko@MacBook-Air-Zaja test4 
+% echo "line line line"> 1.txt
+ 
+Посмотреть содержимое файла 1
+zajko@MacBook-Air-Zaja test4 
+% cat 1.txt
+line line line
+ 
+Добавьте в файл 3 три строки со словами line
+zajko@MacBook-Air-Zaja test4 
+% echo "line line line"> 3.txt
+ 
+Просмотрите содержимое двух файлов (1 и 3) сразу
+zajko@MacBook-Air-Zaja test4 
+% cat 1.txt 3.txt
+line line line
+line line line
+ 
+ 
+Используя один из редакторов замените все строки в файле 1
+ 
+zajko@MacBook-Air-Zaja test4 
+% nano 1.txt
+Заменила слова на love и преименовала файл, проверила:
+zajko@MacBook-Air-Zaja test4 
+% cat love.txt
+love love love
